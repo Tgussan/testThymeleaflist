@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HTMLの練習</title>
+
+</head>
+<body>
+<div th:object="${hello3Form}">
+     <p  th:text="${hello3Form.name}"></p>
+     <!-- <p  th:text="${hello3Form.defaultPassword}"></p> -->
+     <p  th:text="${hello3Form.example}"></p>
+     <select name="example">
+		<p th:if="${hello3Form.example == '1'}"><option value="1" selected>1</option></p>
+		<p th:if="${hello3Form.example != '1'}"><option value="1">1</option></p>
+		<p th:if="${hello3Form.example == '2'}"><option selected value="2">2</option></p>
+		<p th:if="${hello3Form.example != '2'}"><option  value="2">2</option></p>
+		<p th:if="${hello3Form.example == '3'}"><option selected value="3">1</option></p>
+		<p th:if="${hello3Form.example != '3'}"><option  value="3">3</option></p>
+	</select>
+</div>
+<form><input class="search-text" id="search-text" type="text" placeholder="銘柄を入力" /></form>
+<div id="search-result__hit-num"></div>
+<div id="search-result__list"></div>
+<ol id="target_area">
+<li>夏目漱石,（なつめそうせき）</li>
+<li>芥川龍之介,（あくたがわりゅうのすけ）</li>
+<li>太宰治,（だざいおさむ）</li>
+<li>谷崎潤一郎,（たにざきじゅんいちろう）</li>
+<li>宮沢賢治,（みやざわけんじ）</li>
+<li>川端康成,（かわばたやすなり）</li>
+<li>三島由紀夫,（みしまゆきお）</li>
+<li>志賀直哉,（しがなおや）</li>
+<li>森鴎外,（もりおうがい）</li>
+<li>安部公房,（あべこうぼう）</li>
+<li>中島敦,（なかじまあつし）</li>
+
+</ol>
+<select size="10" id="replace" class="replace" >
+<option th:each="item : ${list}" value="${item.name}" th:text="${item.name}"></option>
+</select>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><br />
+<script type="text/javascript">
+$(function () {
+	$("#search-text").keyup(function()){
+	   var searchText = $("#search-text").val();
+	     $(""#replace option").each( function(){
+	       targetText = $(this).text();
+	       if (targetText.indexOf(searchText) != -1) {
+	       	$(this).show();
+	      } else {
+	        $(this).hide();
+	      }
+	    });    
+    });
+});
+</script>
+<button onclick="clickEvent()">ボタン</button>
+ 
+<script>
+    function clickEvent() {
+        alert('クリックされました');
+    }
+</script>
+</body>
+</html>

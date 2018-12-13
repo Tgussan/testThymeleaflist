@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>HTML</title>
+</head>
+<body>
+<h3>test</h3>
+<form role="form" action="/outpg01" th:action="@{/outpg01}" th:object="${hello3Form}" method="post">
+    <input type="text" th:field="${hello3Form.name}" />
+    <select name="example">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+	</select>
+    <button type="submit">Do</button>
+</form>
+</body>
+</html>
